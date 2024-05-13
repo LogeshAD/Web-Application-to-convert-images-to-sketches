@@ -5,19 +5,19 @@ import numpy as np
 import cv2 
 
 
-def convertto_watercolorsketch(inp_img): 
+def convertto_water_sketch(inp_img): 
 	img_1 = cv2.edgePreservingFilter(inp_img, flags=2, sigma_s=50, sigma_r=0.8) 
 	img_water_color = cv2.stylization(img_1, sigma_s=100, sigma_r=0.5) 
 	return(img_water_color) 
 ]
-def pencilsketch(inp_img): 
+def pencil_sketch(inp_img): 
 	img_pencil_sketch, pencil_color_sketch = cv2.pencilSketch( 
 		inp_img, sigma_s=50, sigma_r=0.07, shade_factor=0.0825) 
 	return(img_pencil_sketch) 
 
 
 
-def load_an_image(image): 
+def load_img(image): 
 	img = Image.open(image) 
 	return img 
 
@@ -25,10 +25,10 @@ def load_an_image(image):
 
 def main(): 
 	
-	st.title('WEB APPLICATION FOR CONVERTING IMAGE TO SKETCH') 
+	st.title('WEB APPLICATION FOR CONVERTING IMAGE TO SKETCH Developed By Logesh') 
 	st.write("""This is an application developed for converting\ 
 	your image to a Water Color Sketch OR Pencil Sketch""") 
-	st.subheader("Please Upload your image") 
+	st.subheader("Please Upload The image") 
 	
 
 	image_file = st.file_uploader("Upload Images", type=["png", "jpg", "jpeg"]) 
@@ -48,7 +48,7 @@ def main():
 			col1, col2 = st.columns(2) 
 			with col1: 
 				st.header("Original Image") 
-				st.image(load_an_image(image_file), width=250) 
+				st.image(load_img(image_file), width=250) 
 
 			with col2: 
 				st.header("Water Color Sketch") 
@@ -60,7 +60,7 @@ def main():
 				st.download_button( 
 					label="Download image", 
 					data=byte_im, 
-					file_name="watercolorsketch.png", 
+					file_name="watersketch.png", 
 					mime="image/png"
 				) 
 
@@ -75,7 +75,7 @@ def main():
 			col1, col2 = st.columns(2) 
 			with col1: 
 				st.header("Original Image") 
-				st.image(load_an_image(image_file), width=250) 
+				st.image(load_img(image_file), width=250) 
 
 			with col2: 
 				st.header("Pencil Sketch") 
@@ -87,7 +87,7 @@ def main():
 				st.download_button( 
 					label="Download image", 
 					data=byte_im, 
-					file_name="watercolorsketch.png", 
+					file_name="watersketch.png", 
 					mime="image/png"
 				) 
 
